@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dependency beans -->
+	<!-- eng teacher singleton n eager id eng -->
+	<bean id="eng" class="dependency.EnglishTeacher" />
+	<!-- maths teacher singleton n lazy id maths -->
+	<bean id="maths" class="dependency.MathsTeacher" lazy-init="true" />
+	<!-- sc techer prototype -->
+	<bean id="sc" class="dependency.ScienceTeacher" 
+	scope="prototype" />
+	<!-- sports related depndencies -->
+	<bean id="cricket" class="dependency.CricketCoach" />
+	<bean id="football" class="dependency.FootballCoach"
+		scope="prototype" />
+	<bean id="swimming" class="dependency.SwimmingCoach"
+		lazy-init="true" />
+
+	<!--dependent bean , singleton n eager -->
+	<bean id="pub_school" class="dependent.PublicSchool"
+		init-method="anyInit" destroy-method="anyDestroy"	>
+		<!-- constr based D.I -->
+		<constructor-arg name="myTeacher" ref="sc" />
+		<constructor-arg name="fees" value="12345678"/>
+		<!-- setter based D.I -->
+		<property name="sportsCoach" ref="cricket" />
+	</bean>
+
+</beans>

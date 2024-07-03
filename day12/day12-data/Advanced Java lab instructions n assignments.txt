@@ -1,0 +1,135 @@
+Day 8
+1. Copy "day8-data\code\day8.1" project under your existing workspace.
+File - import -Maven - Existing Maven Project - select day8.1
+
+1.1 Revise the steps
+(refer - "day8-data\day8_help\hibernate steps.txt")
+Refer to day8.1 
+Edit hibernate.cfg.xml , 
+change db name from DB URL n password.
+Test the application.
+
+2. Hands on -
+Refer - products table - id , category (BAKERY|SHOES|CLOTHES|STATIONAY) ,product name(unique)  , price , available quantity
+
+2.1 Continue with either test_hibernate_basic or day8.1
+Using hibernate -
+Add 3 product details 
+Fetch product details by it's id.
+
+
+Day 9
+1. Copy "day9-data\code\day9.1" project under your existing workspace.
+File - import -Maven - Existing Maven Project - select day9.1
+Edit DB settings from hibernate.cfg.xml
+(change password)
+
+2. In the combined lab session(zoom call )
+Revise CRUD n JPQL , Constructor Expression
+With  today's "day9-data\day9_help\Hibernate Sequence.txt" n day9.1 project
+
+3. Hands on 
+Continue with your yesterday's project or copy it as day9_assignment
+
+Solve 
+3.1 Display all the product details under specified category n between the given price range.
+user  i/p - minPrice , maxPrice , category
+Hint - jpql with named IN params - getResultList
+
+3.2 Apply discount to all the products , from given category
+user i/p - product category, discount amount
+o/p a message how many products were discounted
+
+Hint - update JPQL("update Product p set p.price=p.price-:discount where p.category=:cat")
+ -use single argument createQuery -  set 2 named IN params
+-executeUpdate 
+
+3.3 Purchase a product
+user i/p - Product id n quantity
+Validation - Check if product is available (check the available quantity )
+Customer should be able to purchase a product if n only if it's available !
+o/p a message indicating success or failure
+Hint -get product details (session.get)
+validate --in case of success --setter (set Qty) --upon commit : update query will be fired!
+
+3.4 Delete product details
+user i/p - product name(unique)
+o/p a message
+Hint -select jpql (select p from Product p where p.name=:nm)- createQuery - setParameter - getSingleResult 
+session.delete(product) -
+upon commit -delete query will be fired.
+
+
+
+Mandatory reading work (for exam)
+Hibernate sequence
+Automatic dirty checking 
+
+Day 10
+1. Copy "day10-data\code\day10.2" project under your existing workspace.
+File - import -Maven - Existing Maven Project - select day10.2
+Edit DB settings from hibernate.cfg.xml
+(change DB password)
+Force update Maven project
+
+
+2. Copy n import as existing Maven poject n force update 
+"Template Projects\web_maven_hibernate"
+(It's a dynamic web project , where we are going to add hibernate , from scratch)
+
+We will discuss - "day10-data\product category assignment with hibernate.png"
+I will get you started with 1 page flow , you can later complete others (for additional practice)
+The layers - ServletContextListener - to manage SessionFactory
+JSP - Java Beans - HibernateBased DAO -HibernateUtils - Hibernate managed entities (BaseEntity , Category n Product)
+Category - name(unique) n description
+Product - product name(unique)  , price , available quantity
+Establish a bi dir relationship n test it.
+Category  1<-->*  Product
+
+insert 3 records under categories table (in mysql cmd line client)
+Objective - add new product under the category
+
+
+Day 11
+1. git pull data.
+
+2.
+Copy "Template Projects\test_spring" project under your existing workspace.
+File - import -Maven - Existing Maven Project - Force update
+(This will download spring maven dependencies)
+We are going to start with introduction to spring in the evening theory session.
+
+3.  copym n import day11.1 in your workspace.
+Edit db settings in hibernate.cfg.xml file.
+
+NO new assignments today.
+We have covered in depth , advanced hibernate .
+We will do COMPLETE revision of yesterday n today's concepts with code samples , in today's lab session.
+How ?
+Refer to different types of associations(in entity layer)  , along with the annoatations
+Then simply trace the flow from Testers n DAO layer.
+If you want more practice , solve some of the "Lab work" mentioned in today's advanced hibernate sequence.
+
+
+Day 12
+1. Copy n import today's Spring projects
+day12.1 --- day12.5
+To revise 
+Spring Bean life cycle n D.I modes 
+
+2. Continue to autowire=constructor
+
+3. Enter hybrid approach 
+To replace xml tags by annotations
+
+4. Revise many-many and value types.
+
+
+
+
+
+
+
+
+
+
